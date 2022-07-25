@@ -10,6 +10,10 @@ Make sure you have the latest version of Python installed
 * Open the cmd on the folder where requir.txt is located
 * Run `pip install -r requir.txt`
 * Scroll at the end of the main.py file and put your token
+```py
+Example
+client.run('ODQ2NzQ5NjM1NjA1NDk5OTM0.GhfcgO.uMLYSPpZoUvzxa5ivYRc4htr09yniLx22Ymp3Q')
+```
 * Lastly, run `python main.py`
 ## Usage
 * Run .yt <link> [file type (--mp3/mp4)

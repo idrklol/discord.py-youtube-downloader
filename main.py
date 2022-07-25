@@ -9,7 +9,7 @@ from io import BytesIO
 from discord.ext import commands
 from pytube import YouTube
 
-delete_after_compl = False
+delete_after_compl = True
 
 mp4path = 'mp4dl'
 mp3path = 'mp3dl'

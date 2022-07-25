@@ -67,7 +67,7 @@ async def ytdl(ctx, link, filetype=None):
 		if filetype == None:
 			filetype = '--mp4'
 
-		embed1 = discord.Embed(title=f'Searching {link}', color=0x463c37)
+		embed1 = discord.Embed(title=f'Searching {link}')
 		await ctx.send(embed=embed1)
 
 		url = pytube.YouTube(link)
@@ -78,14 +78,14 @@ async def ytdl(ctx, link, filetype=None):
 			video = url.streams.filter(
 				progressive=True, file_extension='mp4').first()
 			embed2 = discord.Embed(
-				title='Video found, downloading...', color=0x463c37)
+				title='Video found, downloading...')
 			await ctx.send(embed=embed2)
 			video.download(mp4path, filename=fname + '.mp4')
 			time.sleep(10)
 			fsize = os.path.getsize(f"{mp4path}\{fname}.mp4")
 			if fsize >= maxUpload:
 				embed = discord.Embed(
-					title='Where\'s my video?', description=f"Your video is larger than `{maxUploadMB}mb`.\nReason behind is the [upload limit](https://github.com/discord/discord-api-docs/issues/2037).", color=0x463c37)
+					title='Where\'s my video?', description=f"Your video is larger than `{maxUploadMB}mb`.\nReason behind is the [upload limit](https://github.com/discord/discord-api-docs/issues/2037).")
 				await ctx.reply(embed=embed)
 				if delete_after_compl == True:
 					await os.remove(f'{mp4path}\{fname}.mp4')
@@ -97,14 +97,14 @@ async def ytdl(ctx, link, filetype=None):
 		elif filetype == '--mp3':
 			video = url.streams.filter(only_audio=True).first()
 			embed2 = discord.Embed(
-				title='Audio found, downloading...', color=0x463c37)
+				title='Audio found, downloading...')
 			await ctx.send(embed=embed2)
 
 			video.download(mp3path, filename=fname + '.mp3')
 			fsize = os.path.getsize(f"{mp3path}\{fname}.mp3")
 			if fsize >= maxUpload:
 				embed = discord.Embed(
-					title='Where\'s my audio?', description=f"Your audio is larger than `{maxUploadMB}mb` (somehow).\nReason behind is the [upload limit](https://github.com/discord/discord-api-docs/issues/2037).", color=0x463c37)
+					title='Where\'s my audio?', description=f"Your audio is larger than `{maxUploadMB}mb` (somehow).\nReason behind is the [upload limit](https://github.com/discord/discord-api-docs/issues/2037).")
 				await ctx.reply(embed=embed)
 				if delete_after_compl == True:
 					await os.remove(f'{mp3path}\{fname}.mp3')

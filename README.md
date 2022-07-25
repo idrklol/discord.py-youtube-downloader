@@ -1,4 +1,4 @@
-# discord.py youtube downloader
+# discord.py youtube downloader <img src="https://c.tenor.com/NA1Zs9FrCWYAAAAi/chika.gif" width="30"/>
 Discord bot written in python that downloads youtube videos, either as mp3 or mp4.
 ## Warnings
 * The bot can't upload videos larger than the server's upload limit (based on boosts)

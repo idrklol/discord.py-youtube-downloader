@@ -115,4 +115,4 @@ async def ytdl(ctx, link, filetype=None):
 		else:
 			await ctx.send(f"`{filetype}` is not a supported filetype")
 
-client.run('ODQ2NzQ4NjM1NjA1NDk5OTM0.GffcgO.uMLYSPpZoUvzxa5ivYRc40jx09yniLx22Ymp3Q')
+client.run('token here')

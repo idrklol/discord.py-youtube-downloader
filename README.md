@@ -25,4 +25,6 @@ client.run('ODQ2NzQ5NjM1NjA1NDk5OTM0.GhfcgO.uMLYSPpZoUvzxa5ivYRc4htr09yniLx22Ymp
 # 
 If you want your videos to not be deleted from your disk after being sent set `delete_after_compl` to `False`
 
-Credit to https://github.com/razordx/disctube because i used it as base
+Credit to [this guy](https://github.com/razordx/disctube) because i used it as base
+
+And [Razy!!](https://github.com/razyness) thank you very much!!!!!

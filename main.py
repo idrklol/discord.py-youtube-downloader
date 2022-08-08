@@ -79,6 +79,7 @@ async def ytdl(ctx, link, filetype=None):
 				progressive=True, file_extension='mp4').first()
 			embed2 = discord.Embed(
 				title='Video found, downloading...')
+			before = time.monotonic()
 			await ctx.send(embed=embed2)
 			video.download(mp4path, filename=fname + '.mp4')
 			time.sleep(10)
@@ -90,7 +91,8 @@ async def ytdl(ctx, link, filetype=None):
 				if delete_after_compl == True:
 					await os.remove(f'{mp4path}\{fname}.mp4')
 				return
-			await ctx.reply(file=discord.File(f'{mp4path}\{fname}.mp4'))
+			after = (time.monotonic() - before)
+			await ctx.reply(f'Downloaded in {round(after, 2)}s', file=discord.File(f'{mp4path}\{fname}.mp4'))
 			if delete_after_compl == True:
 				await os.remove(f'{mp4path}\{fname}.mp4')
 
@@ -98,6 +100,7 @@ async def ytdl(ctx, link, filetype=None):
 			video = url.streams.filter(only_audio=True).first()
 			embed2 = discord.Embed(
 				title='Audio found, downloading...')
+			before = time.monotonic()
 			await ctx.send(embed=embed2)
 
 			video.download(mp3path, filename=fname + '.mp3')
@@ -109,7 +112,8 @@ async def ytdl(ctx, link, filetype=None):
 				if delete_after_compl == True:
 					await os.remove(f'{mp3path}\{fname}.mp3')
 				return
-			await ctx.reply(file=discord.File(f'{mp3path}\{fname}.mp3'))
+			after = (time.monotonic() - before)
+			await ctx.reply(f'Downloaded in {round(after, 2)}s', file=discord.File(f'{mp3path}\{fname}.mp3'))
 			if delete_after_compl == True:
 				await os.remove(f'{mp3path}\{fname}.mp3')
 		else:

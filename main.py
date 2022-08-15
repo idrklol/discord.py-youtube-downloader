@@ -11,8 +11,8 @@ from pytube import YouTube
 
 delete_after_compl = True
 
-mp4path = 'mp4dl'
-mp3path = 'mp3dl'
+mp4path = 'cache/mp4dl'
+mp3path = 'cache/mp3dl'
 
 intents = discord.Intents.default()
 intents.members = True
@@ -73,7 +73,7 @@ async def ytdl(ctx, link, filetype=None):
 		url = pytube.YouTube(link)
 
 		fname = str(
-			f'download_{ctx.author.name}_{binascii.b2a_hex(os.urandom(5))}')
+			f'download_{str(ctx.author)}_{binascii.b2a_hex(os.urandom(5))}')
 		if filetype == '--mp4':
 			video = url.streams.filter(
 				progressive=True, file_extension='mp4').first()

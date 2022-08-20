@@ -68,7 +68,7 @@ async def ytdl(ctx, link, filetype=None):
 			filetype = '--mp4'
 
 		embed1 = discord.Embed(title=f'Searching {link}')
-		await ctx.send(embed=embed1)
+		fmsg = await ctx.send(embed=embed1)
 
 		url = pytube.YouTube(link)
 
@@ -80,28 +80,30 @@ async def ytdl(ctx, link, filetype=None):
 			embed2 = discord.Embed(
 				title='Video found, downloading...')
 			before = time.monotonic()
-			await ctx.send(embed=embed2)
+			await fmsg.edit(embed=embed2)
 			video.download(mp4path, filename=fname + '.mp4')
 			time.sleep(10)
 			fsize = os.path.getsize(f"{mp4path}\{fname}.mp4")
 			if fsize >= maxUpload:
 				embed = discord.Embed(
 					title='Where\'s my video?', description=f"Your video is larger than `{maxUploadMB}mb`.\nReason behind is the [upload limit](https://github.com/discord/discord-api-docs/issues/2037).")
-				await ctx.reply(embed=embed)
+				await fmsg.edit(embed=embed)
 				if delete_after_compl == True:
 					await os.remove(f'{mp4path}\{fname}.mp4')
+				fmsg.delete()
 				return
 			after = (time.monotonic() - before)
 			await ctx.reply(f'Downloaded in {round(after, 2)}s', file=discord.File(f'{mp4path}\{fname}.mp4'))
 			if delete_after_compl == True:
 				await os.remove(f'{mp4path}\{fname}.mp4')
+			fmsg.delete()
 
 		elif filetype == '--mp3':
 			video = url.streams.filter(only_audio=True).first()
 			embed2 = discord.Embed(
 				title='Audio found, downloading...')
 			before = time.monotonic()
-			await ctx.send(embed=embed2)
+			await fmsg.edit(embed=embed2)
 
 			video.download(mp3path, filename=fname + '.mp3')
 			fsize = os.path.getsize(f"{mp3path}\{fname}.mp3")
@@ -111,12 +113,15 @@ async def ytdl(ctx, link, filetype=None):
 				await ctx.reply(embed=embed)
 				if delete_after_compl == True:
 					await os.remove(f'{mp3path}\{fname}.mp3')
+				await fmsg.delete()
 				return
 			after = (time.monotonic() - before)
 			await ctx.reply(f'Downloaded in {round(after, 2)}s', file=discord.File(f'{mp3path}\{fname}.mp3'))
 			if delete_after_compl == True:
 				await os.remove(f'{mp3path}\{fname}.mp3')
+			fmsg.delete()
 		else:
 			await ctx.send(f"`{filetype}` is not a supported filetype")
+			fmsg.delete()
 
 client.run('token here')

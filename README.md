@@ -16,7 +16,7 @@ Make sure you have the latest version of Python installed
 * Put your token in the `token` value - [Developer Portal](https://discord.com/developers/)
 ```py
 Example
-token = ODQ2NzQ5NjM1NjA1NDk5OTM0.GhfcgO.uMLYSPpZoUvzxa5ivYRc4htr09yniLx22Ymp3Q
+token = 'ODQ2NzQ5NjM1NjA1NDk5OTM0.GhfcgO.uMLYSPpZoUvzxa5ivYRc4htr09yniLx22Ymp3Q'
 ```
 * Lastly, run `python main.py`
 ## ✅ Usage

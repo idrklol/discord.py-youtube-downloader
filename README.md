@@ -13,10 +13,10 @@ Discord bot written in python that downloads youtube videos, either as mp3 or mp
 Make sure you have the latest version of Python installed
 * Open the cmd on the folder where requir.txt is located
 * Run `pip install -r requir.txt`
-* Scroll at the end of the main.py file and put your token
+* Put your token in the `token` value - [Developer Portal](https://discord.com/developers/)
 ```py
 Example
-client.run('ODQ2NzQ5NjM1NjA1NDk5OTM0.GhfcgO.uMLYSPpZoUvzxa5ivYRc4htr09yniLx22Ymp3Q')
+token = ODQ2NzQ5NjM1NjA1NDk5OTM0.GhfcgO.uMLYSPpZoUvzxa5ivYRc4htr09yniLx22Ymp3Q
 ```
 * Lastly, run `python main.py`
 ## ✅ Usage

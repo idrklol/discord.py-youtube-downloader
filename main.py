@@ -10,6 +10,7 @@ from discord.ext import commands
 from pytube import YouTube
 
 delete_after_compl = True
+token = 'token here (in quotes)'
 
 mp4path = 'cache/mp4dl'
 mp3path = 'cache/mp3dl'
@@ -125,4 +126,4 @@ async def ytdl(ctx, link, filetype=None):
 			await ctx.send(f"`{filetype}` is not a supported filetype")
 			await fmsg.delete()
 
-client.run('token here')
+client.run(token)

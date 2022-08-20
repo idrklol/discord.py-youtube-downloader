@@ -16,6 +16,7 @@ mp3path = 'cache/mp3dl'
 
 intents = discord.Intents.default()
 intents.members = True
+intents.message_content = True
 
 client = commands.Bot(command_prefix=".", intents=intents)
 
@@ -90,13 +91,13 @@ async def ytdl(ctx, link, filetype=None):
 				await fmsg.edit(embed=embed)
 				if delete_after_compl == True:
 					await os.remove(f'{mp4path}\{fname}.mp4')
-				fmsg.delete()
+				await fmsg.delete()
 				return
 			after = (time.monotonic() - before)
 			await ctx.reply(f'Downloaded in {round(after, 2)}s', file=discord.File(f'{mp4path}\{fname}.mp4'))
 			if delete_after_compl == True:
 				await os.remove(f'{mp4path}\{fname}.mp4')
-			fmsg.delete()
+			await fmsg.delete()
 
 		elif filetype == '--mp3':
 			video = url.streams.filter(only_audio=True).first()
@@ -119,9 +120,9 @@ async def ytdl(ctx, link, filetype=None):
 			await ctx.reply(f'Downloaded in {round(after, 2)}s', file=discord.File(f'{mp3path}\{fname}.mp3'))
 			if delete_after_compl == True:
 				await os.remove(f'{mp3path}\{fname}.mp3')
-			fmsg.delete()
+			await fmsg.delete()
 		else:
 			await ctx.send(f"`{filetype}` is not a supported filetype")
-			fmsg.delete()
+			await fmsg.delete()
 
 client.run('token here')

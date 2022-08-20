@@ -91,13 +91,13 @@ async def ytdl(ctx, link, filetype=None):
 					title='Where\'s my video?', description=f"Your video is larger than `{maxUploadMB}mb`.\nReason behind is the [upload limit](https://github.com/discord/discord-api-docs/issues/2037).")
 				await fmsg.edit(embed=embed)
 				if delete_after_compl == True:
-					await os.remove(f'{mp4path}\{fname}.mp4')
+					os.remove(f'{mp4path}\{fname}.mp4')
 				await fmsg.delete()
 				return
 			after = (time.monotonic() - before)
 			await ctx.reply(f'Downloaded in {round(after, 2)}s', file=discord.File(f'{mp4path}\{fname}.mp4'))
 			if delete_after_compl == True:
-				await os.remove(f'{mp4path}\{fname}.mp4')
+				os.remove(f'{mp4path}\{fname}.mp4')
 			await fmsg.delete()
 
 		elif filetype == '--mp3':
@@ -114,13 +114,13 @@ async def ytdl(ctx, link, filetype=None):
 					title='Where\'s my audio?', description=f"Your audio is larger than `{maxUploadMB}mb` (somehow).\nReason behind is the [upload limit](https://github.com/discord/discord-api-docs/issues/2037).")
 				await ctx.reply(embed=embed)
 				if delete_after_compl == True:
-					await os.remove(f'{mp3path}\{fname}.mp3')
+					os.remove(f'{mp3path}\{fname}.mp3')
 				await fmsg.delete()
 				return
 			after = (time.monotonic() - before)
 			await ctx.reply(f'Downloaded in {round(after, 2)}s', file=discord.File(f'{mp3path}\{fname}.mp3'))
 			if delete_after_compl == True:
-				await os.remove(f'{mp3path}\{fname}.mp3')
+				os.remove(f'{mp3path}\{fname}.mp3')
 			await fmsg.delete()
 		else:
 			await ctx.send(f"`{filetype}` is not a supported filetype")
